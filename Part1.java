@@ -95,15 +95,6 @@ class BST {
     }
   } // End insertRec
 
-  public static void inOrder(Node root)
-  {
-      if ( root == null )
-          return;
-
-      inOrder(root.left);
-      System.out.println(root.val);
-      inOrder(root.right);
-  }
 
   Node deleteIter( int valToDelete )
   {
@@ -292,72 +283,6 @@ class BST {
   static int findPrevRec( Node node )
   {
     return findMaxRec ( node.left );
-  }
-
-  public static boolean isBST(Node root, int topRoot)
-    {
-
-        boolean flag = true;
-        
-        if ( root == null )
-            return true;
-        if ( root.left == null && root.right == null )
-            return true;
-        
-        if ( root.val == topRoot ) // This is the very first node
-        {
-            if ( root.left != null)
-          {  if ( root.left.val < root.val )
-                flag = isBST(root.left, topRoot);
-            else
-                return false;}
-          if ( root.right != null)
-          {  
-            if ( root.right.val > root.val )
-                flag = isBST(root.right, topRoot);
-            else
-                return false;
-          }
-        }
-        
-        if ( root.val < topRoot ) // This is a left subtree
-        {
-          if ( root.left != null)
-            {  if ( root.left.val < root.val )
-                  flag = isBST(root.left, topRoot);
-              else
-                  return false;}
-          if ( root.right != null)
-            {  if ( root.right.val > root.val && root.right.val < topRoot )
-                  flag = isBST(root.right, topRoot);
-                else
-                  return false;}
-          }
-        
-        if ( root.val > topRoot ) // This is a right 
-        {
-          if ( root.right != null)
-          {  if ( root.right.val > root.val )
-                flag = isBST(root.right, topRoot);
-            else
-                return false;}
-        if ( root.left != null)
-          {  if ( root.left.val < root.val && root.left.val > topRoot )
-                flag = isBST(root.left, topRoot);
-            else
-                return false;}
-        }
-        
-        return flag;
-        
-    }
-
-  public static void checkIsBST( Node root )
-  {
-    if (isBST(root, root.val))
-      System.out.println("true");
-    else
-      System.out.println("false");
   }
 
   static List<Integer> sort( List<Integer> unsortedList )
